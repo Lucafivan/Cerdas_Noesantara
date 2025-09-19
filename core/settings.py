@@ -37,7 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'learning',
+    'payments',
+    'theme',
+    'django_extensions',
+    'tailwind',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
