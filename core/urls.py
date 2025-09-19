@@ -20,7 +20,9 @@ from . import views
 from theme import views as theme_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', theme_views.landing_view, name='landing'),
+    path('', theme_views.landing_view, name='landing'),  
+    path('login/', theme_views.login_view, name='login'),
+    path('register/', theme_views.register_view, name='register'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('quiz/', views.quiz, name='quiz')
 ]

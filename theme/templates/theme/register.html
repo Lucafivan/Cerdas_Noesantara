@@ -1,0 +1,145 @@
+<!-- File: theme/templates/theme/register.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Cerdas Noesantara</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial,sans-serif;}
+body, html {height:100%; background:#f5f5f5;}
+.container {display:flex; height:100vh;}
+
+/* Left panel: elegant gradient */
+.left-panel {
+    flex:1; 
+    background: linear-gradient(135deg,#fefbe9,#e0e0e0);
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    align-items:center;
+    font-size:3rem; 
+    text-align:center; 
+    padding:20px;
+}
+.left-panel img { max-width:200px; margin-bottom:20px; }
+
+/* Right panel: clean white */
+.right-panel {
+    flex:1; 
+    background:#ffffff;
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    padding:40px;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.05);
+}
+
+.register-form { 
+    width:100%; 
+    max-width:400px; 
+    display:flex; 
+    flex-direction:column; 
+}
+.register-form h2 { 
+    margin-bottom:20px; 
+    text-align:center; 
+    color:#333; 
+}
+
+/* Labels and inputs */
+.register-form label {
+    margin-bottom:5px; 
+    font-weight:bold; 
+    color:#555;
+}
+.register-form input { 
+    padding:12px; 
+    margin-bottom:15px; 
+    border:1px solid #ccc; 
+    border-radius:5px; 
+    font-size:1rem; 
+}
+
+.register-form button { 
+    padding:12px; 
+    background:#f7c600; 
+    color:#333; 
+    border:none; 
+    border-radius:5px; 
+    font-size:1rem; 
+    cursor:pointer; 
+    font-weight:bold; 
+}
+.register-form button:hover { 
+    background:#e6b200; 
+}
+
+.back-link { 
+    margin-top:15px; 
+    text-align:center; 
+    font-size:0.9rem; 
+    color:#555; 
+}
+.back-link a { 
+    color:#f7c600; 
+    text-decoration:none; 
+    font-weight:bold; 
+}
+.back-link a:hover { 
+    text-decoration:underline; 
+}
+
+@media (max-width:768px){
+    .container { flex-direction:column;}
+    .left-panel { flex:none; height:200px; font-size:2rem;}
+    .right-panel { flex:none; padding:20px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="left-panel">
+        <img src="{% static 'IMG/Logo_Cerdas_Nusantara.png' %}" alt="Logo Cerdas Noesantara">
+    </div>
+    <div class="right-panel">
+        <form class="register-form" method="POST" action="">
+            {% csrf_token %}
+            <h2>Register</h2>
+
+            {% if error %}
+                <p style="color:red; text-align:center;">{{ error }}</p>
+            {% endif %}
+
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Masukkan username" required>
+
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" placeholder="Masukkan nama depan" required>
+
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" placeholder="Masukkan nama belakang" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Masukkan email" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" name="phone" id="phone" placeholder="Masukkan nomor telepon" required>
+
+            <label for="date_of_birth">Date of Birth</label>
+            <input type="date" name="date_of_birth" id="date_of_birth" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Masukkan password" required>
+
+            <button type="submit">Register</button>
+
+            <div class="back-link">
+                Sudah punya akun? <a href="{% url 'login' %}">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
